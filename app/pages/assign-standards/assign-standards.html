@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Teacher's</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div>
+    <ion-card *ngFor="let userItem of teachersList">
+      <ion-item class="cardHeader">
+        <ion-avatar item-right>
+          <ion-col>
+            <button primary clear small (click)="goToAssignStandardsList(userItem)">
+        <ion-icon name="create"></ion-icon>        
+      </button>
+          </ion-col>
+        </ion-avatar>
+        <h2 style="font-weight: 800;">{{userItem.userName}}</h2>
+        <p>{{userItem.emailId}}</p>
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>

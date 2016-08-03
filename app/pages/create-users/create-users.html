@@ -1,0 +1,41 @@
+<!--<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>App Users</ion-title>
+  </ion-navbar>
+</ion-header>-->
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>App Users</ion-title> 
+    <ion-buttons end>
+    <button (click)="goToAddAppUsers()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding> 
+
+  <div >
+    <ion-card *ngFor="let userItem of appUsersList | async">
+      <ion-item class="cardHeader">
+        <ion-avatar item-right>
+          <ion-col>
+            <button primary clear small (click)="goToAppUserUpdate(userItem)">
+        <ion-icon name="create"></ion-icon>
+        <div>Edit</div>
+      </button>
+          </ion-col>
+        </ion-avatar>
+        <h2 style="font-weight: 800;">{{userItem.userName}}</h2>
+        <p>{{userItem.emailId}}</p>
+      </ion-item>      
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Assign Standard & Classes
+        </ion-title>
+        <ion-buttons start>
+            <button (click)="dismiss()">
+        <span primary showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <form [ngFormModel]="assignTeachersForm">
+        <ion-row responsive-sm>
+            <ion-col width-50>
+                <ion-item>
+                    <ion-label floating danger>Standard</ion-label>
+                    <ion-select [ngFormControl]="assignTeachersForm.controls.standardId" type="text">
+                        <ion-option *ngFor="let item of standardList | async" value="{{item.Value}}">{{item.Display}}</ion-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+            <ion-col width-50>
+                <ion-item>
+                    <ion-label floating danger>Class</ion-label>
+                    <ion-select [ngFormControl]="assignTeachersForm.controls.classesId" type="text">
+                        <ion-option *ngFor="let item of classesList | async" value="{{item.Value}}">{{item.Display}}</ion-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row responsive-sm>
+            <ion-col width-50>
+                <button (click)="AssignToTeachers(assignTeachersForm)" type="submit" *ngIf="assignTeachersForm.valid" primary block>Assign</button>
+            </ion-col>
+            <ion-col width-50>
+                <button (click)="DeleteAssignToTeachers(assignTeachersForm)" type="submit" *ngIf="isEdit" danger block>Delete</button>
+            </ion-col>            
+        </ion-row>
+    </form>
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Student Profile</ion-title>
+    <ion-buttons end>
+      <button (click)="goToStudentDetail()">
+      <ion-icon name="create"></ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<div text-center>
+    <h3>{{studentInfo.fullName}}</h3>
+    <h4>{{studentInfo.studentId}}</h4>
+  </div>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{opType}} App Users</ion-title>
+    <ion-buttons end>
+      <button (click)="onSaveAppUsers(createUserForm)" [disabled]="!createUserForm.valid" type="submit">
+      <ion-icon name="checkmark-circle"></ion-icon>
+    </button>
+    </ion-buttons>    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <form [ngFormModel]="createUserForm">
+
+      <ion-item>
+        <ion-label floating danger>Name</ion-label>
+        <ion-input [ngFormControl]="createUserForm.controls.displayname" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating danger>E-Mail</ion-label>
+        <ion-input [ngFormControl]="createUserForm.controls.username" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating danger>Password</ion-label>
+        <ion-input [ngFormControl]="createUserForm.controls.password" type="password"></ion-input>
+      </ion-item>
+    </form>
+  </div>  
+</ion-content>

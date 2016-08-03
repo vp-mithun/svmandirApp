@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>    
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <form [ngFormModel]="loginForm">
+
+      <ion-item>
+        <ion-label floating>User email</ion-label>
+        <ion-input ngControl="username" type="text" [class.invalid]="!loginForm.controls.username.valid && (usernameChanged || submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="!loginForm.controls.username.valid  && (usernameChanged || submitAttempt)" no-lines>
+        <ion-label danger>User Email is invalid</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input ngControl="password" type="password" [class.invalid]="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!loginForm.controls.password.valid  && (passwordChanged || submitAttempt)" no-lines>
+        <ion-label danger>Please enter a password</ion-label>
+      </ion-item>
+      <ion-row responsive-sm>
+        <ion-col>
+          <button (click)="login()" type="submit" primary block>Login</button>
+        </ion-col>
+      </ion-row>
+
+      <div padding>
+            <p *ngIf="error" class="error">{{ error }}</p>
+        </div>
+
+    </form>
+  </ion-list>
+</ion-content>

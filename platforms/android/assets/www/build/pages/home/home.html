@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+You are assigned to following class, click to view students
+<div>
+    <ion-card *ngFor="let userItem of assignTolist | async">
+      <ion-item class="cardHeader">
+        <ion-avatar item-right>
+          <ion-col>
+            <button primary clear small (click)="goToStudentsList(userItem)">
+        <ion-icon name="eye"></ion-icon>        
+      </button>
+          </ion-col>
+        </ion-avatar>
+        <h2 style="font-weight: 800;">Standard {{userItem.standardId}}, Class {{userItem.classesId}}</h2>        
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>

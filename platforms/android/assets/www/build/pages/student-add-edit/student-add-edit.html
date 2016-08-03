@@ -1,0 +1,166 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{opType}} Student</ion-title>
+    <ion-buttons end>
+      <button (click)="onSaveStudentInfo(studentForm)" [disabled]="!studentForm.valid" type="submit">
+      <ion-icon name="checkmark-circle"></ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="student-add-edit">
+  <form [ngFormModel]="studentForm">
+    <ion-segment [(ngModel)]="pagesegment" primary>
+      <ion-segment-button value="basic">
+        Basic
+      </ion-segment-button>
+      <ion-segment-button value="personal">
+        Personal
+      </ion-segment-button>
+      <ion-segment-button value="hostel">
+        Hostel
+      </ion-segment-button>
+    </ion-segment>
+    <br>
+    <div [ngSwitch]="pagesegment">
+      <!-- Form elements for BASIC -->
+      <ion-list *ngSwitchCase="'basic'">
+        <ion-row>
+          <ion-item>
+            <ion-label floating danger>Full Name</ion-label>
+            <ion-input [ngFormControl]="studentForm.controls.fullName" type="text"></ion-input>
+          </ion-item>
+        </ion-row>
+        <ion-row>
+          <ion-col width-50>
+            <!--<ion-item>
+              <ion-label floating danger>Batch</ion-label>
+              <ion-select ngControl="batchId" type="text" [class.invalid]="!studentForm.controls.batchId.valid && (batchIdChanged || submitAttempt)">
+                <ion-option *ngFor="let item of batchesList | async" value="{{item.Value}}">{{item.Display}}</ion-option>
+              </ion-select>
+            </ion-item>            -->
+            <ion-item>
+              <ion-label floating danger>Student Id</ion-label>
+              <ion-input [ngFormControl]="studentForm.controls.studentId" type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label floating primary>
+                <ion-icon name="calendar"></ion-icon> Date of Admission</ion-label>
+              <ion-datetime [ngFormControl]="studentForm.controls.DateOfAdmission" displayFormat="MMM DD YYYY"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label floating danger>
+                <ion-icon name="call"></ion-icon> Parent Phone</ion-label>
+              <ion-input [ngFormControl]="studentForm.controls.parentPhone" type="text">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <!--<ion-item>
+          <ion-label floating danger>IdPrefix</ion-label>
+          <ion-input ngControl="idPrefix" type="text" type="text" [class.invalid]="!studentForm.controls.idPrefix.valid && (idPrefixChanged || submitAttempt)">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating primary>Group</ion-label>
+          <ion-select ngControl="groupId" type="text" [class.invalid]="!studentForm.controls.groupId.valid && (groupIdChanged || submitAttempt)">
+            <ion-option *ngFor="let item of groupsList | async" value="{{item.Value}}">{{item.Display}}</ion-option>
+          </ion-select>
+        </ion-item>-->
+        <ion-row>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label floating danger>Standard</ion-label>
+              <ion-select [ngFormControl]="studentForm.controls.standardId" type="text">
+                <ion-option *ngFor="let item of standardList | async" value="{{item.Value}}">{{item.Display}}</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label floating primary>Class</ion-label>
+              <ion-select [ngFormControl]="studentForm.controls.classId" type="text">
+                <ion-option *ngFor="let item of classesList | async" value="{{item.Value}}">{{item.Display}}</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label floating primary>GR No</ion-label>
+              <ion-input type="text" [ngFormControl]="studentForm.controls.grNo">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col width-50>            
+            <ion-item>
+              <ion-label floating danger>Gender</ion-label>
+              <ion-select type="text" [ngFormControl]="studentForm.controls.Gender">
+                <ion-option value="1">Male</ion-option>
+                <ion-option value="2">Female</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label floating primary>Seat No</ion-label>
+              <ion-input type="text" type="text" [ngFormControl]="studentForm.controls.seatNo"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label floating primary>Roll No</ion-label>
+              <ion-input type="text" [ngFormControl]="studentForm.controls.rollNo"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-item>
+          <ion-label floating primary>Postal Address</ion-label>
+          <ion-textarea type="text" [ngFormControl]="studentForm.controls.postalAddress">
+          </ion-textarea>
+        </ion-item>
+        <ion-row>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label floating primary>City/ Village</ion-label>
+              <ion-input type="text" [ngFormControl]="studentForm.controls.cityVillage"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label floating primary>PIN Code</ion-label>
+              <ion-input type="text" [ngFormControl]="studentForm.controls.pinCode"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <!--<ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label floating primary>
+                <ion-icon name="calendar"></ion-icon> School Leaving Date</ion-label>
+              <ion-datetime displayFormat="MMM DD YYYY" ngControl="schoolLeavingDate" [class.invalid]="!studentForm.controls.schoolLeavingDate.valid && (schoolLeavingDateChanged || submitAttempt)"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>-->
+        <!--<ion-item>
+          <ion-label floating primary>School Leaving Remarks</ion-label>
+          <ion-textarea ngControl="schoolLeavingRemark" type="text" [class.invalid]="!studentForm.controls.schoolLeavingRemark.valid && (schoolLeavingRemarkChanged || submitAttempt)">
+          </ion-textarea>
+        </ion-item>-->
+      </ion-list>
+
+    </div>
+  </form>
+
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Assign Standards</ion-title>
+    <ion-buttons end>
+      <button (click)="openAddEditModal()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngIf="!isAssigned">
+    <p danger>Please assign Standards & classes to {{selectedTeacher.userName}}</p>
+  </div>
+  <div *ngIf="isAssigned">
+    <p><b>{{selectedTeacher.userName}}</b> handles these standards</p>
+    <div>
+      <ion-card *ngFor="let Item of teachersAssignedList">
+        <ion-item class="cardHeader">
+          <ion-avatar item-right>
+            <ion-col>
+              <button primary clear small (click)="goToChangeAssignStandard(Item)">
+                <ion-icon name="create"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-avatar>
+          <h4 style="font-weight: 800;">{{Item.standardId}} '{{Item.classesId}}'</h4>          
+        </ion-item>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,22 @@
+
+.speaker-list {
+  
+  .cardHeader{
+    background-color: #0097A7;
+  }
+  ion-card.speaker ion-card-header .item {
+    padding: 8px;
+  }
+
+  ion-card.speaker ion-card-content .list {
+    margin: 4;
+    padding: 8px;
+  }
+
+  ion-card.speaker ion-card-header,
+  ion-card.speaker ion-card-content,
+  ion-card.speaker ion-card-content .list ion-item-content, {
+    padding: 2;
+  }
+  
+}
